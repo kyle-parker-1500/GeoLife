@@ -31,11 +31,22 @@ public class MainActivity extends AppCompatActivity {
         textDisplayTextView = (TextView) findViewById(R.id.textDisplayTextView);
         getInputEditText = (EditText) findViewById(R.id.buttonEditText);
         textAddButton.setOnClickListener(new View.OnClickListener() {
-            boolean isVisible = false;
             @Override
             public void onClick(View v) {
                 userInputText = getInputEditText.getText().toString();
                 textDisplayTextView.setText(userInputText);
+            }
+        });
+
+        textAddButton.setOnLongClickListener(new View.OnLongClickListener() {
+            boolean isVisible = true;
+            @Override
+            public boolean onLongClick(View v) {
+                // todo: - it's not showing back up
+                isVisible = !isVisible;
+                if (!isVisible)
+                    textDisplayTextView.setVisibility(View.INVISIBLE);
+                return false;
             }
         });
     }
